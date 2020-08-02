@@ -34,7 +34,12 @@ namespace ActiveRedactor
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             indexRow = e.RowIndex;
-            if (e.RowIndex == -1) return;
+            if (e.RowIndex == -1)
+            {
+                indexRow = 0;
+                return;
+            }
+
             DataGridViewRow row = dataGridView1.Rows[indexRow];
 
             boxId.Text = row.Cells[0].Value.ToString();

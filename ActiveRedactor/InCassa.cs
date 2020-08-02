@@ -32,7 +32,12 @@ namespace ActiveRedactor
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             indexRow = e.RowIndex;
-            if (e.RowIndex == -1) return;
+            if (e.RowIndex == -1)
+            {
+                indexRow = 0;
+                return;
+            }
+            
             DataGridViewRow row = dataGridView1.Rows[indexRow];
 
             BoxId.Text = row.Cells[0].Value.ToString();
@@ -43,8 +48,9 @@ namespace ActiveRedactor
         private void Changebtn_Click(object sender, EventArgs e)
         {
             DataGridViewRow newDataRow = dataGridView1.Rows[indexRow];
+            
             try
-            {
+            {   
                 newDataRow.Cells[0].Value = BoxId.Text;
                 newDataRow.Cells[1].Value = BoxSum.Text;
                 newDataRow.Cells[2].Value = BoxCurrency.Text;
